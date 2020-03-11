@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test if component render correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Home>
+        <div
+          className="container-contact100 animated fadeIn fast "
+        >
+          <div
+            className="d-flex flex-column align-items-center justify-content-center bg-white p-5"
+          >
+            <div
+              className="m-3"
+            />
+            <h3
+              className="text-success"
+            >
+              Welcome back, 
+              <strong>
+                test
+              </strong>
+            </h3>
+            <div
+              className="m-3"
+            >
+              <ProfilePicture>
+                <div
+                  className="avartar-wrapper position-relative d-flex flex-column align-items-center justify-content-center overflow-hidden"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <img
+                    alt="user avatar"
+                    src="http://localhost:5000/api/users/image/test"
+                    width="100%"
+                  />
+                  <span
+                    className="d-none"
+                    id="update-avatar"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="d-flex flex-column justify-content-center align-items-center"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#ffffffaa",
+                          }
+                        }
+                      >
+                        <i
+                          className="fas fa-camera-retro"
+                        />
+                      </span>
+                      <span
+                        style={
+                          Object {
+                            "fontSize": "12px",
+                            "fontWeight": "bold",
+                          }
+                        }
+                      >
+                        Update
+                      </span>
+                    </div>
+                  </span>
+                  <Bootstrap(Modal)
+                    centered={true}
+                    onHide={[Function]}
+                    show={false}
+                    size="md"
+                  >
+                    <Modal
+                      animation={true}
+                      autoFocus={true}
+                      backdrop={true}
+                      bsPrefix="modal"
+                      centered={true}
+                      dialogAs={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "displayName": "ModalDialog",
+                          "render": [Function],
+                        }
+                      }
+                      enforceFocus={true}
+                      keyboard={true}
+                      manager={
+                        BootstrapModalManager {
+                          "adjustAndStore": [Function],
+                          "containers": Array [],
+                          "data": Array [],
+                          "handleContainerOverflow": true,
+                          "hideSiblingNodes": true,
+                          "modals": Array [],
+                          "restore": [Function],
+                          "scrollbarSize": 0,
+                        }
+                      }
+                      onHide={[Function]}
+                      restoreFocus={true}
+                      show={false}
+                      size="md"
+                    >
+                      <Modal
+                        autoFocus={true}
+                        backdrop={true}
+                        backdropTransition={[Function]}
+                        className="modal"
+                        containerClassName="modal-open"
+                        enforceFocus={true}
+                        keyboard={true}
+                        manager={
+                          BootstrapModalManager {
+                            "adjustAndStore": [Function],
+                            "containers": Array [],
+                            "data": Array [],
+                            "handleContainerOverflow": true,
+                            "hideSiblingNodes": true,
+                            "modals": Array [],
+                            "restore": [Function],
+                            "scrollbarSize": 0,
+                          }
+                        }
+                        onClick={[Function]}
+                        onEnter={[Function]}
+                        onEntering={[Function]}
+                        onExited={[Function]}
+                        onHide={[Function]}
+                        onMouseUp={[Function]}
+                        renderBackdrop={[Function]}
+                        restoreFocus={true}
+                        role="dialog"
+                        show={false}
+                        style={Object {}}
+                        transition={[Function]}
+                      />
+                    </Modal>
+                  </Bootstrap(Modal)>
+                </div>
+              </ProfilePicture>
+            </div>
+            <div
+              className="m-3"
+            >
+              <Link
+                className="btn btn-info mx-5 home-btn"
+                to="/change-password"
+              >
+                <a
+                  className="btn btn-info mx-5 home-btn"
+                  href="/change-password"
+                  onClick={[Function]}
+                >
+                  Change Password
+                </a>
+              </Link>
+              <SignOut>
+                <button
+                  className="btn btn-danger mx-5 home-btn"
+                  onClick={[Function]}
+                >
+                  Sign Out
+                </button>
+              </SignOut>
+            </div>
+          </div>
+        </div>
+      </Home>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

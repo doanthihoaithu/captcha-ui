@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button should be rendered correctly 1`] = `
+<div
+  className="home-container row overflow-hidden w-100 m-0 animated fadeIn fast "
+>
+  <div
+    className="col-1 pr-0 d-inline-block side-bar-root animated slideInLeft"
+    style={
+      Object {
+        "minHeight": "100vh",
+      }
+    }
+  >
+    <SideBar />
+  </div>
+  <div
+    className="col-11 d-flex flex-column align-items-center"
+  >
+    <Suspense
+      fallback="Loading..."
+    >
+      <Switch>
+        <Route
+          exact={true}
+          key="Home"
+          name="Home"
+          path="/"
+          render={[Function]}
+        />
+        <Route
+          exact={true}
+          key="Change Password"
+          name="Change Password"
+          path="/change-password"
+          render={[Function]}
+        />
+        <Redirect
+          from="/"
+          to="/"
+        />
+      </Switch>
+    </Suspense>
+  </div>
+</div>
+`;

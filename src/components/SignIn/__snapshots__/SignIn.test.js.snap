@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        }
+      }
+    >
+      <_default>
+        <div
+          className="container-contact100 animated fadeIn fast "
+        >
+          <div
+            className="wrap-contact100"
+          >
+            <button
+              className="btn-hide-contact100"
+            >
+              <i
+                className="zmdi zmdi-close"
+              />
+            </button>
+            <div
+              className="contact100-form-title"
+              style={
+                Object {
+                  "backgroundImage": "url(bg-02.jpg)",
+                }
+              }
+            >
+              <span>
+                Sign In
+              </span>
+            </div>
+            <form
+              className="contact100-form validate-form"
+              onSubmit={[Function]}
+            >
+              <div
+                className="wrap-input100 validate-input"
+              >
+                <input
+                  aria-describedby="usernameHelp"
+                  className="input100"
+                  id="exampleInputUsername1"
+                  pattern="^(?=.{6,150}$)[a-zA-Z0-9]+$"
+                  placeholder="Enter username"
+                  required={true}
+                  type="text"
+                />
+                <span
+                  className="focus-input100"
+                />
+                <label
+                  className="label-input100"
+                  htmlFor="username"
+                >
+                  <span
+                    className="lnr lnr-user m-b-2"
+                  />
+                </label>
+              </div>
+              <div
+                className="wrap-input100 validate-input"
+              >
+                <input
+                  className="input100"
+                  id="exampleInputPassword1"
+                  pattern="^(?=.{8,150}$)[a-zA-Z0-9]+$"
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                />
+                <span
+                  className="focus-input100"
+                />
+                <label
+                  className="label-input100"
+                  htmlFor="password"
+                >
+                  <span
+                    className="lnr lnr-lock m-b-5"
+                  />
+                </label>
+              </div>
+              <div
+                className="text-danger w-100 text-center mb-1"
+                hidden={true}
+              >
+                Incorrect username or password
+              </div>
+              <div
+                className="container-contact100-form-btn"
+              >
+                <button
+                  className="contact100-form-btn"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
+            <div
+              className="d-flex flex-column justify-content-center align-items-center mb-4"
+            >
+              <Link
+                className="text-info"
+                to="/forget-password"
+              >
+                <a
+                  className="text-info"
+                  href="/forget-password"
+                  onClick={[Function]}
+                >
+                  Forgot your password?
+                </a>
+              </Link>
+              <div
+                className="p-1"
+              >
+                <small>
+                  Don't have an account? 
+                </small>
+                <Link
+                  className="text-info"
+                  to="/signup"
+                >
+                  <a
+                    className="text-info"
+                    href="/signup"
+                    onClick={[Function]}
+                  >
+                    Create now
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </_default>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

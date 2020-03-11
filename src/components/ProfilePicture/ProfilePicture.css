@@ -1,0 +1,31 @@
+.avartar-wrapper{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 2px solid #00000090;
+    cursor: pointer;
+}
+
+#update-avatar {
+    position: absolute;
+    bottom: 0;
+    background-color: #00000090;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+#inputGroupFile01{
+    cursor: pointer;
+}
