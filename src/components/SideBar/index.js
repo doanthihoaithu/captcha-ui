@@ -52,6 +52,12 @@ const SideBar = (props) => {
                     faIcon={"fa-home"}
                 />
                 <MenuLink
+                    label={"Analysis"}
+                    to={"/analysis"}
+                    activeOnlyWhenExact={true}
+                    faIcon={"fa-chart-bar"}
+                />
+                <MenuLink
                     label={"Change password"}
                     to={"/change-password"}
                     activeOnlyWhenExact={true}

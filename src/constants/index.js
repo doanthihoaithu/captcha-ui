@@ -13,3 +13,5 @@ export const user_change_password_address = API_address + '/users/change-passwor
 export const user_update_avatar_address = API_address + '/users/update-avatar/';
 
 export const user_get_avatar_address = API_address + '/users/image/';
+
+export const analysis_analyze_query = API_address + '/analysis/check'

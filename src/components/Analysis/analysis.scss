@@ -1,0 +1,7 @@
+.analysis-container {
+    .custom-file-label::after {
+        content: "";
+        height: unset!important;
+        padding-top: 16px;
+    }
+}
