@@ -54,17 +54,6 @@
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --no-ignore --fix",
-      "git add"
-    ]
-  },
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
