@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { analysisServices } from 'services';
 import "./analysis.scss"
+import Result from './Result';
 
 function Analysis() {
 	const accessToken = useSelector(state => state.user.accessToken);
 
 	const [img, setImg] = useState(null)
-	const [data, setData] = useState()
+	const [data, setData] = useState([])
 
 	const queryTextRef = useRef(null);
 
@@ -37,16 +38,18 @@ function Analysis() {
 		const formData = new FormData();
 		formData.append('text', queryText)
 		formData.append('image', img)
+		console.log(process.env.REACT_APP_BACKEND_HOST);
+
 		analysisServices.analyzeQuery(accessToken, formData).then((res) => {
-			console.log(res);
+			console.log(res.data);
 			changeRequestStatus(true);
 			changeSomethingWrongedStatus(false);
-			setData(res.data)
+			setData(res.data.data)
 			animationTrigger.stopLoading()
 		}).catch(err => {
 			console.log(err)
 			changeSomethingWrongedStatus(true);
-			setData('Something went wrong!')
+			setData([])
 			animationTrigger.stopLoading()
 		})
 	}
@@ -75,8 +78,8 @@ function Analysis() {
 					requestSucceeded
 						? (
 							<div className="d-flex align-items-center justify-content-center m-5 flex-column">
-								<h3 className="text-success text-center mb-3">Result</h3>
-								<span>{JSON.stringify(data)}</span>
+								{/* <h3 className="text-success text-center mb-3">Result</h3> */}
+								<Result data={data} />
 								<div className="d-flex flex-column justify-content-center align-items-center mt-4">
 									<Link to="#" className="text-info" onClick={() => changeRequestStatus(false)}>Analyze something else</Link>
 								</div>
@@ -104,7 +107,7 @@ function Analysis() {
 											onChange={handleImageData}
 											style={{ height: 'unset' }}
 										/>
-										<label className="custom-file-label no-wrap py-3" htmlFor="inputGroupFile01" style={{ height: 'unset' }}>{img ? img.name : 'Choose your picture...'}</label>
+										<label className="custom-file-label no-wrap py-3" htmlFor="inputGroupFile01" style={{ height: 'unset', fontSize: '1rem' }}>{img ? img.name : 'Choose your picture...'}</label>
 									</div>
 								</div>
 

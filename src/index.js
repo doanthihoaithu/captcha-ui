@@ -5,10 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './services';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
     <Provider store={store} >
-        <App /> 
+        <App />
     </Provider>,
     document.getElementById('root')
 );
