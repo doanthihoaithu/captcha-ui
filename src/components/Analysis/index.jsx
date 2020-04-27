@@ -56,11 +56,11 @@ function Analysis() {
 
 	const onFormSubmit = (event) => {
 		event.preventDefault();
-
-		const valid = event.target.checkValidity();
 		// console.log(valid)
-		if (valid) {
+		if (queryTextRef.current.value || img) {
 			requestAnalysis(queryTextRef.current.value);
+		} else {
+			alert('Please input something')
 		}
 	}
 
