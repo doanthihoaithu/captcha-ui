@@ -25,7 +25,7 @@ function Result({ data }) {
                         xl: 4,
                         xxl: 4,
                     }}
-                    dataSource={data}
+                    dataSource={data.text}
                     renderItem={item => (
                         <List.Item>
                             <Card

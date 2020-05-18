@@ -5,12 +5,19 @@ import { useSelector } from 'react-redux';
 import { analysisServices } from 'services';
 import "./analysis.scss"
 import Result from './Result';
+import { Form } from 'react-bootstrap';
 
 function Analysis() {
 	const accessToken = useSelector(state => state.user.accessToken);
 
 	const [img, setImg] = useState(null)
 	const [data, setData] = useState([])
+	const [queryType, setQueryType] = useState({
+		elasticsearch: true,
+		text: true,
+		image: true,
+		combination: true,
+	})
 
 	const queryTextRef = useRef(null);
 
@@ -38,6 +45,7 @@ function Analysis() {
 		const formData = new FormData();
 		formData.append('text', queryText)
 		formData.append('image', img)
+		formData.append('types', JSON.stringify(queryType))
 		console.log(process.env.REACT_APP_BACKEND_HOST);
 
 		analysisServices.analyzeQuery(accessToken, formData).then((res) => {
@@ -62,6 +70,13 @@ function Analysis() {
 		} else {
 			alert('Please input something')
 		}
+	}
+
+	const toggleQueryType = (type) => {
+		setQueryType({
+			...queryType,
+			[type]: !queryType[type]
+		})
 	}
 
 	return (
@@ -110,6 +125,12 @@ function Analysis() {
 										<label className="custom-file-label no-wrap py-3" htmlFor="inputGroupFile01" style={{ height: 'unset', fontSize: '1rem' }}>{img ? img.name : 'Choose your picture...'}</label>
 									</div>
 								</div>
+								<Form.Group >
+									<Form.Check type="checkbox" label="Elasticsearch" checked={queryType.elasticsearch} onChange={() => toggleQueryType('elasticsearch')} />
+									<Form.Check type="checkbox" label="Text" checked={queryType.text} onChange={() => toggleQueryType('text')} />
+									<Form.Check type="checkbox" label="Image" checked={queryType.image} onChange={() => toggleQueryType('image')} />
+									<Form.Check type="checkbox" label="Combine" checked={queryType.combination} onChange={() => toggleQueryType('combination')} />
+								</Form.Group>
 
 								<div className="w-100 text-center mb-1"><span className="text-danger" hidden={!somethingWronged}>Something went wrong. Please try agiain!</span></div>
 
