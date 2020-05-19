@@ -11,7 +11,7 @@ function Analysis() {
 	const accessToken = useSelector(state => state.user.accessToken);
 
 	const [img, setImg] = useState(null)
-	const [data, setData] = useState([])
+	const [data, setData] = useState({})
 	const [queryType, setQueryType] = useState({
 		elasticsearch: true,
 		text: true,
@@ -125,10 +125,12 @@ function Analysis() {
 										<label className="custom-file-label no-wrap py-3" htmlFor="inputGroupFile01" style={{ height: 'unset', fontSize: '1rem' }}>{img ? img.name : 'Choose your picture...'}</label>
 									</div>
 								</div>
-								<Form.Group >
+								<Form.Group className="col-6">
 									<Form.Check type="checkbox" label="Elasticsearch" checked={queryType.elasticsearch} onChange={() => toggleQueryType('elasticsearch')} />
-									<Form.Check type="checkbox" label="Text" checked={queryType.text} onChange={() => toggleQueryType('text')} />
 									<Form.Check type="checkbox" label="Image" checked={queryType.image} onChange={() => toggleQueryType('image')} />
+								</Form.Group>
+								<Form.Group className="col-6">
+									<Form.Check type="checkbox" label="Text" checked={queryType.text} onChange={() => toggleQueryType('text')} />
 									<Form.Check type="checkbox" label="Combine" checked={queryType.combination} onChange={() => toggleQueryType('combination')} />
 								</Form.Group>
 

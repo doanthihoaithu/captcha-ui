@@ -16,28 +16,51 @@ function Result({ data }) {
                 onCancel={() => setVisibility(false)}
                 width={1000}
             >
-                <List
-                    grid={{
-                        xs: 4,
-                        sm: 4,
-                        md: 4,
-                        lg: 4,
-                        xl: 4,
-                        xxl: 4,
-                    }}
-                    dataSource={data.text}
-                    renderItem={item => (
-                        <List.Item>
-                            <Card
-                                hoverable
-                                style={{ width: 180 }}
-                                cover={<img alt={item.product_name} src={item.url_images[0]} style={{ padding: '1px' }} />}
+                <div className="row no-gutter">
+                    {
+                        Object.keys(data).map(key => (
+                            <div
+                                className={`col-${12 / Object.keys(data).length} p-0`}
+                                style={{ border: '1px solid gray' }}
                             >
-                                <Card.Meta title={item.product_name} description={item.price + ' VNĐ'} />
-                            </Card>
-                        </List.Item>
-                    )}
-                />
+                                <div
+                                    className="text-center"
+                                    style={{
+                                        fontWeight: 'bold',
+                                        fontSize: '24px',
+                                        padding: '20px 0',
+                                        border: '1px solid gray',
+                                    }}
+                                >
+                                    {key}
+                                </div>
+                                <List
+                                    grid={{
+                                        xs: 1,
+                                        sm: 1,
+                                        md: 1,
+                                        lg: 1,
+                                        xl: 1,
+                                        xxl: 1,
+                                    }}
+                                    style={{ border: '1px solid gray', }}
+                                    dataSource={data[key]}
+                                    renderItem={item => (
+                                        <List.Item className="d-flex justify-content-center">
+                                            <Card
+                                                hoverable
+                                                style={{ width: '180px' }}
+                                                cover={<img alt={item.product_name} src={item.url_images[0]} style={{ padding: '1px' }} />}
+                                            >
+                                                <Card.Meta title={item.product_name} description={`Score: ${item.score}`} />
+                                            </Card>
+                                        </List.Item>
+                                    )}
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
                 {/* {
                     data.map((item, index) => (
                         <Card
