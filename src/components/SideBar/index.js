@@ -47,17 +47,11 @@ const SideBar = (props) => {
     }
 
     return (
-      <nav className="main-menu">
+      <nav className="main-menu expanded">
         <ul>
           <MenuLink
-            label="Home"
-            to="/analysis"
-            activeOnlyWhenExact
-            faIcon="fa-home"
-          />
-          <MenuLink
             label="Analysis"
-            to="/analysis"
+            to="/"
             activeOnlyWhenExact
             faIcon="fa-chart-bar"
           />

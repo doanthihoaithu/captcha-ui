@@ -56,7 +56,7 @@ function App() {
                 path={route.path}
                 exact={route.exact}
                 name={route.name}
-                render={restProps => (!isAuthenticated ? <route.component {...restProps} title={route.name} /> : <Redirect to="/" />)}
+                render={restProps => (!isAuthenticated ? <route.component {...restProps} title={route.name} /> : <Redirect to="/analysis" />)}
               />
             ) : null,
           )}

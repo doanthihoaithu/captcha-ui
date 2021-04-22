@@ -180,10 +180,10 @@ function Analysis() {
 						)}
 						{
 							detectCapcha ? (
-<								div className="grid-box">
+								<div className="d-flex justify-content-center flex-column align-items-center">
 									<h3>Result</h3>
 									<h1>{text}</h1>
-									<img src={constants.analysis_analyze_result} />						
+									<img src={constants.analysis_analyze_result + "?" + new Date().getTime() } />						
 								</div>
 							): null
 						}

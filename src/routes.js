@@ -8,9 +8,7 @@ import CaptchaGenerator from 'components/Analysis/CaptchaGenerator'
 
 const routes = {
     appRoutes: [
-        { path: '/', exact: true, name: 'Home', component: Home },
-        { path: '/change-password', exact: true, name: 'Change Password', component: ChangePassword },
-        { path: '/analysis', exact: true, name: 'Analysis', component: Analysis },
+        { path: '/', exact: true, name: 'Analysis', component: Analysis },
         { path: '/generate', exact: true, name: 'Generate', component: CaptchaGenerator },
     ],
     authenticationRoutes: [

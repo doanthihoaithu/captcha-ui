@@ -176,7 +176,7 @@ function CaptchaGenerator() {
 						)}
 						{
 							detectCapcha ? (
-								<div style={{display: 'flex', justifyContent: 'center'}}>
+								<div className="d-flex justify-content-center flex-column align-items-center">
 									<row>
 										<h3>Result</h3>
 									</row>
