@@ -13,6 +13,19 @@ const analyzeQuery = (accessToken, data) => requestServices.customAxios.post(
     }
 )
 
+const generateQuery = (data) => requestServices.customAxios.post(
+    constants.generate_captcha_query,
+    data,
+    {
+        headers: {
+            // 'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'multipart/form-data',
+            // 'Content-Type': 'application/json'
+        }
+    }
+)
+
 export default {
-    analyzeQuery
+    analyzeQuery,
+    generateQuery
 }

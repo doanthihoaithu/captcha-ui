@@ -4,12 +4,14 @@ import ChangePassword from 'components/ChangePasssword'
 import ForgetPassword from 'components/ForgetPassword'
 import Home from 'components/Home'
 import Analysis from 'components/Analysis'
+import CaptchaGenerator from 'components/Analysis/CaptchaGenerator'
 
 const routes = {
     appRoutes: [
         { path: '/', exact: true, name: 'Home', component: Home },
         { path: '/change-password', exact: true, name: 'Change Password', component: ChangePassword },
         { path: '/analysis', exact: true, name: 'Analysis', component: Analysis },
+        { path: '/generate', exact: true, name: 'Generate', component: CaptchaGenerator },
     ],
     authenticationRoutes: [
         { path: '/signin', exact: true, name: 'SignIn', component: SignIn },

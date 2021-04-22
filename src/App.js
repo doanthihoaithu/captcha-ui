@@ -27,7 +27,8 @@ function cookieExpired() {
 
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const isAuthenticated = true;
+  // const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const isLoading = useSelector(state => state.status.isLoading)
   // const [loggingStatus, updateLoggingStatus] = useState(cookies.get("leave") ? true : false);
 

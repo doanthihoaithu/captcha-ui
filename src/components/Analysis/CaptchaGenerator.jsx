@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { analysisServices } from 'services';
 import "./analysis.scss"
-import Result from './Result';
 import { Form } from 'react-bootstrap';
 import * as constants from 'constants/index'
+import Result from './Result';
 
-function Analysis() {
+function CaptchaGenerator() {
 	const accessToken = useSelector(state => state.user.accessToken);
 
 	const [img, setImg] = useState(null)
 	const [detectCapcha, setDetectCapcha] = useState(false)
 	const [text, setText] = useState(null)
+	const [name, setName] = useState(null)
 	const [data, setData] = useState({})
 	const [queryType, setQueryType] = useState({
 		elasticsearch: true,
@@ -42,45 +43,18 @@ function Analysis() {
 		}
 	}
 
-	// const requestAnalysis = (queryText) => {
-	// 	animationTrigger.startLoading();
-
-	// 	const formData = new FormData();
-	// 	formData.append('text', queryText)
-	// 	formData.append('image', img)
-	// 	formData.append('types', JSON.stringify(queryType))
-	// 	console.log(process.env.REACT_APP_BACKEND_HOST);
-
-	// 	analysisServices.analyzeQuery(accessToken, formData).then((res) => {
-	// 		console.log(res.data)
-	// 		setDetectCapcha(res.data.success)
-	// 		setText(res.data.text)
-	// 		// setImg(res.data);
-	// 		// @TODO show the returned data, currently log only
-
-
-	// 		// changeRequestStatus(true);
-	// 		// changeSomethingWrongedStatus(false);
-	// 		// setData(res.data)
-	// 		animationTrigger.stopLoading()
-	// 	}).catch(err => {
-	// 		console.log(err)
-	// 		changeSomethingWrongedStatus(true);
-	// 		setData([])
-	// 		animationTrigger.stopLoading()
-	// 	})
-	// }
-
-	const requestAnalysis = () => {
+	const requestGenerate = (queryText) => {
+		console.log(queryText)
 		animationTrigger.startLoading();
 
 		const formData = new FormData();
-		formData.append('image', img)
+		formData.set('text', queryText)
+		// console.log
 
-		analysisServices.analyzeQuery(accessToken, formData).then((res) => {
+		analysisServices.generateQuery(formData).then((res) => {
 			console.log(res.data)
 			setDetectCapcha(res.data.success)
-			setText(res.data.text)
+			setName(res.data.name)
 			// setImg(res.data);
 			// @TODO show the returned data, currently log only
 
@@ -100,8 +74,8 @@ function Analysis() {
 	const onFormSubmit = (event) => {
 		event.preventDefault();
 		// console.log(valid)
-		if (img) {
-			requestAnalysis();
+		if (queryTextRef.current.value || img) {
+			requestGenerate(queryTextRef.current.value);
 		} else {
 			alert('Please input something')
 		}
@@ -114,6 +88,28 @@ function Analysis() {
 		})
 	}
 
+	const download = e => {
+		console.log(e.target.href);
+		let url = constants.generate_captcha_query+"?name=" + name
+		fetch(url, {
+		  method: "GET",
+		  headers: {}
+		})
+		  .then(response => {
+			response.arrayBuffer().then(function(buffer) {
+			  const url = window.URL.createObjectURL(new Blob([buffer]));
+			  const link = document.createElement("a");
+			  link.href = url;
+			  link.setAttribute("download", "image.png"); //or any other extension
+			  document.body.appendChild(link);
+			  link.click();
+			});
+		  })
+		  .catch(err => {
+			console.log(err);
+		  });
+	  };
+
 	return (
 		<div className="container-contact100 animated fadeIn fast analysis-container">
 			<div className="wrap-contact100">
@@ -122,7 +118,7 @@ function Analysis() {
 				</button>
 
 				<div className="contact100-form-title" style={{ backgroundImage: `url(${require('./../../asset/images/bg-02.jpg')})` }}>
-					<span>Analysis</span>
+					<span>Captcha Generator</span>
 				</div>
 				{
 					requestSucceeded
@@ -136,15 +132,15 @@ function Analysis() {
 							</div>
 						) : (
 							<form className="contact100-form validate-form" onSubmit={onFormSubmit}>
-								{/* <div className="wrap-input100 validate-input">
-									<input type="text" ref={queryTextRef} className="input100" id="queryText" placeholder="Enter query text" required={false} />
+								<div className="wrap-input100 validate-input">
+									<input type="text" ref={queryTextRef} className="input100" id="queryText" placeholder="Type captcha text here..." required={false} />
 									<span className="focus-input100" />
 									<label className="label-input100" htmlFor="text-query">
 										<span className="lnr lnr-pencil m-b-2" />
 									</label>
-								</div> */}
+								</div>
 
-								<div className="input-group my-3">
+								{/* <div className="input-group my-3">
 									<div className="input-group-prepend">
 										<span className="input-group-text py-3" id="inputGroupFileAddon01">Upload</span>
 									</div>
@@ -160,7 +156,7 @@ function Analysis() {
 										<label className="custom-file-label no-wrap py-3" htmlFor="inputGroupFile01" style={{ height: 'unset', fontSize: '1rem' }}>{img ? img.name : 'Choose your picture...'}</label>
 									</div>
 								</div>
-								{/* <Form.Group className="col-6">
+								<Form.Group className="col-6">
 									<Form.Check type="checkbox" label="Elasticsearch" checked={queryType.elasticsearch} onChange={() => toggleQueryType('elasticsearch')} />
 									<Form.Check type="checkbox" label="Image" checked={queryType.image} onChange={() => toggleQueryType('image')} />
 								</Form.Group>
@@ -173,17 +169,32 @@ function Analysis() {
 
 								<div className="container-contact100-form-btn">
 									<button className="contact100-form-btn" type="submit">
-										Analyze
+										Generate
       								</button>
 								</div>
 							</form>
 						)}
 						{
 							detectCapcha ? (
-<								div className="grid-box">
-									<h3>Result</h3>
-									<h1>{text}</h1>
-									<img src={constants.analysis_analyze_result} />						
+								<div style={{display: 'flex', justifyContent: 'center'}}>
+									<row>
+										<h3>Result</h3>
+									</row>
+
+									<row>
+										<img src={constants.generate_captcha_query+"?name=" + name} />	
+									</row>
+									
+									
+									<row>
+										<button className="contact100-form-btn" type="submit" onClick={e => download(e)}>
+											Download
+										</button>
+									</row>
+								
+									
+						
+	
 								</div>
 							): null
 						}
@@ -193,4 +204,4 @@ function Analysis() {
 	)
 };
 
-export default Analysis
+export default CaptchaGenerator

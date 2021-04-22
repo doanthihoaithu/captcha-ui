@@ -51,7 +51,7 @@ const SideBar = (props) => {
         <ul>
           <MenuLink
             label="Home"
-            to="/"
+            to="/analysis"
             activeOnlyWhenExact
             faIcon="fa-home"
           />
@@ -61,11 +61,11 @@ const SideBar = (props) => {
             activeOnlyWhenExact
             faIcon="fa-chart-bar"
           />
-          <MenuLink
-            label="Change password"
-            to="/change-password"
+           <MenuLink
+            label="Captcha Generator"
+            to="/generate"
             activeOnlyWhenExact
-            faIcon="fa-lock"
+            faIcon="fa-cogs"
           />
         </ul>
         <ul className="logout">
