@@ -1,4 +1,4 @@
-export const API_address = `${process.env.REACT_APP_BACKEND_HOST || 'http://localhost:5000'}`;
+export const API_address = 'http://34.126.92.144:5000';
 
 export const user_authenticate_address = `${API_address}/users/authenticate`;
 
